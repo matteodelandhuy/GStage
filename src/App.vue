@@ -1,37 +1,28 @@
 <template>
-  <div id="app">
-    
-    <app-accueil></app-accueil>
-    <app-form></app-form>
-    
-
+ <div class="container">
+  <div class="page">
+    <h2><span>Formulaire</span></h2>
+    <form id="dynform" method="POST" class="panel-body form-horizontal" v-on:submit.prevent="displayForm">
+      <div class="row">
+        <div class="col-md-12 ">
+          <form-question v-for="question in questions" :question="question" :key="question.id"></form-question>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Soumettre</button>
+    </form>
   </div>
+</div>
 </template>
 
 <script>
-import Vue from 'vue';
-
-import Accueil from './components/Accueil.vue';
-import Form from './components/Form.vue'
+import Formulaire from './components/Formulaire.js'
 
 
 export default {
   name: 'App',
   components: {
-    appAccueil: Accueil,
-    appForm: Form
-    
+    Formulaire
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
